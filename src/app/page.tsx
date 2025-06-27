@@ -47,7 +47,7 @@ export default function Home() {
 			<div className="h-[3.5rem] w-full flex p-1 px-4 items-center">
 				<Menu color="white" size={30} className="my-auto" />
 				<div className="flex-1 w-full text-center ">
-					<span className="text-white text-xl font-bold ml-2 w-full">
+					<span className="text-white text-xl font-bold w-full">
 						{cRole[userData?.wRole] || "未登入"}
 					</span>
 				</div>
