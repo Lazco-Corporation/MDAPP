@@ -24,21 +24,25 @@ export default function Home() {
 			name: "校安中心",
 			image: "/icons/MD-safety.png",
 			url: "https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/學生群聚與衝突處理",
+			target: "_blank",
 		},
 		{
 			name: "即時刻表",
 			image: "/icons/MD-timetable.png",
 			url: `https://s44.mingdao.edu.tw/AACourses/Web/qWTTM.php?lang=CH&rMode=APP&session=${userData?.session}&wRole=${userData?.wRole === "STU" ? "STD" : userData?.wRole}`,
+			target: "_blank",
 		},
 		{
 			name: "即時資訊",
 			image: "/icons/MD-info.png",
-			url: ``,
+			url: `https://app.mingdao.edu.tw/MDAPP/menuList.php?qFID=F11&session=${userData?.session}&wRole=${userData?.wRole}`,
+			target: "_blank",
 		},
 		{
 			name: "線上請假",
 			image: "/icons/MD-leave.png",
-			url: ``,
+			url: `https://s44.mingdao.edu.tw/ORDER/SubSystem/stdLeave/leave_login.php?rMode=APP&session=${userData?.session}&wRole=${userData?.wRole}`,
+			target: "_blank",
 		},
 	];
 
@@ -65,7 +69,7 @@ export default function Home() {
 						{menus.map((menu, index) => (
 							<Link
 								href={menu.url}
-								target="_blank"
+								target={menu.target}
 								key={index}
 								className="flex flex-col items-center cursor-pointer transform transition-transform hover:scale-105 active:scale-95 outline-0 focus:outline-0"
 							>
