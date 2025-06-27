@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
+    trustHost: true,
 	pages: {
 		signIn: "/MDAPP/login",
 	},

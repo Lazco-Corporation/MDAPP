@@ -29,7 +29,7 @@ export default function SignIn() {
 						name="id"
 						type="text"
 						placeholder="User ID"
-						className="bg-white ring-0 border-0 outline-0 rounded-md p-1 px-2 w-full flex-1"
+						className="bg-white ring-0 border-0 outline-0 rounded-md p-1 px-2 w-full flex-1 placeholder:text-black/60"
 					/>
 				</div>
 				<hr className="text-white w-full " />
@@ -39,7 +39,7 @@ export default function SignIn() {
 						name="password"
 						type="password"
 						placeholder="Password"
-						className="bg-white ring-0 border-0 outline-0 rounded-md p-1 px-2 w-full flex-1"
+						className="bg-white ring-0 border-0 outline-0 rounded-md p-1 px-2 w-full flex-1 placeholder:text-black/60"
 					/>
 				</div>
 				<hr className="text-white w-full" />
