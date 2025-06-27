@@ -18,7 +18,7 @@ export default function RootLayout({
 			<html lang="en">
 				<body className="bg-gradient-to-b from-[#0c3d89] via-[#016eb3] to-[#0a428d] h-[100dvh] w-[100dvw]">
 					<div className="flex flex-col items-center justify-center h-full w-full">
-						<div className="max-w-md w-full h-full">{children}</div>
+						<div className="w-full h-full">{children}</div>
 					</div>
 				</body>
 			</html>
