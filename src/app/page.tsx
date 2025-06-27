@@ -58,7 +58,7 @@ export default function Home() {
 					onClick={() => signOut({ redirect: true, redirectTo: "/login" })}
 				/>
 			</div>
-			<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center py-4 px-2 overflow-hidden">
+			<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center p-4 overflow-hidden">
 				<img src="/images/logoMD.png" alt="Logo" className="mb-10 w-[12rem]" />
 				<div className="pb-8 overflow-x-auto">
 					<div className="grid grid-cols-4 gap-4 max-sm:gap-3">
@@ -72,9 +72,19 @@ export default function Home() {
 								<img
 									src={menu.image}
 									alt={menu.name}
-									className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg mb-2"
+									className="rounded-xl flex items-center justify-center shadow-lg mb-2 object-cover"
+									style={{
+										width: "clamp(3.5rem, 20vw, 8rem)",
+										height: "clamp(3.5rem, 20vw, 8rem)",
+									}}
 								/>
-								<span className="text-md text-center leading-tight max-w-16 text-white font-bold font-[Arial_Black]">
+								<span
+									className="text-center leading-tight text-white font-bold font-[Arial_Black]"
+									style={{
+										fontSize: "clamp(0.75rem, 3.8vw, 1.1rem)",
+										maxWidth: "clamp(3.5rem, 20vw, 8rem)",
+									}}
+								>
 									{menu.name}
 								</span>
 							</Link>
