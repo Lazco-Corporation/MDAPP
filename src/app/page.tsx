@@ -48,7 +48,7 @@ export default function Home() {
 				<Menu color="white" size={30} className="my-auto" />
 				<div className="flex-1 w-full text-center ">
 					<span className="text-white text-xl font-bold w-full">
-						{cRole[userData?.wRole] || "未登入"}
+						{cRole[userData?.wRole] || ""}
 					</span>
 				</div>
 				<LogOut
@@ -58,10 +58,10 @@ export default function Home() {
 					onClick={() => signOut({ redirect: true, redirectTo: "/login" })}
 				/>
 			</div>
-			<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center py-4 px-2 max-sm:px-1 overflow-hidden">
+			<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center py-4 px-2 overflow-hidden">
 				<img src="/images/logoMD.png" alt="Logo" className="mb-10 w-[12rem]" />
 				<div className="pb-8 overflow-x-auto">
-					<div className="grid grid-cols-4 gap-4">
+					<div className="grid grid-cols-4 gap-4 max-sm:gap-3">
 						{menus.map((menu, index) => (
 							<Link
 								href={menu.url}
@@ -72,7 +72,7 @@ export default function Home() {
 								<img
 									src={menu.image}
 									alt={menu.name}
-									className="w-18 h-18 rounded-xl flex items-center justify-center shadow-lg mb-2"
+									className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg mb-2"
 								/>
 								<span className="text-md text-center leading-tight max-w-16 text-white font-bold font-[Arial_Black]">
 									{menu.name}
