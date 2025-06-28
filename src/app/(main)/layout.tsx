@@ -45,13 +45,7 @@ export default function MainLayout({
 						color="oklch(62.3% 0.214 259.815)"
 						strokeWidth={3}
 						className="my-auto cursor-pointer"
-						onClick={() => {
-							if (pathname !== "/") {
-								router.back();
-							} else {
-								router.refresh();
-							}
-						}}
+						onClick={() => window.location.reload()}
 					/>
 				) : (
 					<Undo2
@@ -59,13 +53,7 @@ export default function MainLayout({
 						color="oklch(62.3% 0.214 259.815)"
 						strokeWidth={3}
 						className="my-auto cursor-pointer"
-						onClick={() => {
-							if (pathname !== "/") {
-								router.back();
-							} else {
-								router.refresh();
-							}
-						}}
+						onClick={() => router.back()}
 					/>
 				)}
 

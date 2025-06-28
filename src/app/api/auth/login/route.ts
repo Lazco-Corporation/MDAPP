@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
 	let session: string | null = null;
 	let wRole: string | null = null;
 	let userID: string | null = null;
+	let userPassword: string | null = password;
 	let name: string | null = null;
 	let stuDept: string | null = null;
 
@@ -135,6 +136,7 @@ export async function POST(request: NextRequest) {
 		{
 			name,
 			userID,
+			userPassword,
 			session,
 			wRole,
 			code,
