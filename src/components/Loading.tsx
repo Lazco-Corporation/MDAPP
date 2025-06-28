@@ -75,12 +75,7 @@ const DotsLoading = ({ color = "blue", text = "" }) => {
 				{[0, 1, 2].map((index) => (
 					<div
 						key={index}
-						className={`
-              w-2 h-2 
-              ${colorClasses[color]} 
-              rounded-full 
-              animate-bounce
-            `}
+						className={`w-2 h-2 ${colorClasses[color]} rounded-full animate-bounce`}
 						style={{
 							animationDelay: `${index * 0.2}s`,
 							animationDuration: "1s",

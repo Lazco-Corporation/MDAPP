@@ -37,7 +37,7 @@ export default function MainLayout({
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-start h-full w-full relative bg-[#1c1c1e]">
+		<div className="flex flex-col items-center justify-start h-full w-full relative bg-[#1c1c1e] overflow-hidden">
 			<div className="h-[3.5rem] w-full flex p-1 px-4 items-center">
 				<Undo2
 					size={32}

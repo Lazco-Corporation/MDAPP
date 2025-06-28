@@ -53,6 +53,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 				token.session = user.session;
 				token.className = user.className;
 				token.userIdentity = user.userIdentity;
+				token.stuDept = user.stuDept;
 			}
 			return (
 				token && {
@@ -64,6 +65,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 					session: token.session,
 					className: token.className,
 					userIdentity: token.userIdentity,
+					stuDept: token.stuDept,
 				}
 			);
 		},
@@ -77,6 +79,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 				session.user.session = token.session;
 				session.user.className = token.className;
 				session.user.userIdentity = token.userIdentity;
+				session.user.stuDept = token.stuDept;
 			}
 			return session;
 		},

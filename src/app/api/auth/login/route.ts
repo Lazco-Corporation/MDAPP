@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
 	let wRole: string | null = null;
 	let userID: string | null = null;
 	let name: string | null = null;
+	let stuDept: string | null = null;
 
 	await fetch("http://140.128.156.106/MDAPP/SloginX.php", requestOptions)
 		.then((response) => response.text())
@@ -57,6 +58,16 @@ export async function POST(request: NextRequest) {
 				wRole = roleTMP[0].replace("wRole=", "");
 			} else {
 				wRole = null;
+			}
+
+			// Find department
+			const deptMatches = result.match(/dept=([^&'"]+)/g);
+			if (deptMatches) {
+				let deptTMP: string[] = [];
+				deptTMP = [...new Set(deptMatches)];
+				stuDept = deptTMP[0].replace("dept=", "");
+			} else {
+				stuDept = null;
 			}
 
 			// Find user ID
@@ -121,7 +132,17 @@ export async function POST(request: NextRequest) {
 	}
 
 	return NextResponse.json(
-		{ name, userID, session, wRole, code, mail, className, userIdentity },
+		{
+			name,
+			userID,
+			session,
+			wRole,
+			code,
+			mail,
+			className,
+			userIdentity,
+			stuDept,
+		},
 		{ status: 200 },
 	);
 }
