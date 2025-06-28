@@ -14,26 +14,26 @@ export default function Home() {
 	const menus = [
 		{
 			name: "校安中心",
-			image: "/icons/MD-safety.png",
+			image: "/icons/MD-safety.webp",
 			url: "https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/學生群聚與衝突處理",
 			target: "_blank",
 		},
 		{
 			name: "即時刻表",
-			image: "/icons/MD-timetable.png",
+			image: "/icons/MD-timetable.webp",
 			url: `https://s44.mingdao.edu.tw/AACourses/Web/qWTTM.php?lang=CH&rMode=APP&session=${userData?.session}&wRole=${userData?.wRole === "STU" ? "STD" : userData?.wRole}`,
 			target: "_blank",
 		},
 		{
 			name: "即時資訊",
-			image: "/icons/MD-info.png",
+			image: "/icons/MD-info.webp",
 			url: `/menu`,
 			// url: `https://app.mingdao.edu.tw/MDAPP/menuList.php?qFID=F11&session=${userData?.session}&wRole=${userData?.wRole}`,
 			target: "_self",
 		},
 		{
 			name: "線上請假",
-			image: "/icons/MD-leave.png",
+			image: "/icons/MD-leave.webp",
 			url: `https://s44.mingdao.edu.tw/ORDER/SubSystem/stdLeave/leave_login.php?rMode=APP&session=${userData?.session}&wRole=${userData?.wRole}`,
 			target: "_blank",
 		},

@@ -43,7 +43,7 @@ export default function MainLayout({
 					size={32}
 					color="oklch(62.3% 0.214 259.815)"
 					strokeWidth={3}
-					className="my-auto"
+					className="my-auto cursor-pointer"
 					onClick={() => {
 						if (pathname !== "/") {
 							router.back();
@@ -59,7 +59,7 @@ export default function MainLayout({
 				</div>
 				<button
 					type="button"
-					className="flex-none"
+					className="flex-none cursor-pointer"
 					onClick={() => setShowLogoutConfirm(true)}
 				>
 					<LogOut
