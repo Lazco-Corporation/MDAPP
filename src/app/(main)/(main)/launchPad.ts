@@ -61,7 +61,7 @@ export function getLaunchPad(userData: any) {
 				target: "_blank",
 			},
 			{
-				name: "學生生活規範",
+				name: "生活規範",
 				image: "/icons/MD-rule.png",
 				url: `https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/首頁`,
 				target: "_blank",
