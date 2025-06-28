@@ -27,8 +27,9 @@ export default function Home() {
 		{
 			name: "即時資訊",
 			image: "/icons/MD-info.png",
-			url: `https://app.mingdao.edu.tw/MDAPP/menuList.php?qFID=F11&session=${userData?.session}&wRole=${userData?.wRole}`,
-			target: "_blank",
+			url: `/menu`,
+			// url: `https://app.mingdao.edu.tw/MDAPP/menuList.php?qFID=F11&session=${userData?.session}&wRole=${userData?.wRole}`,
+			target: "_self",
 		},
 		{
 			name: "線上請假",
@@ -40,13 +41,13 @@ export default function Home() {
 
 	return (
 		<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center p-4 overflow-hidden">
-			<img src="/images/logoMD.png" alt="Logo" className="mb-10 w-[12rem]" />
+			<img src="/images/logoMD.png" alt="Logo" className="my-4 w-[12rem]" />
 			<div className="pb-8 overflow-y-auto">
 				<div className="grid grid-cols-4 gap-4 max-sm:gap-3 p-1">
 					{menus.map((menu, index) => (
 						<Link
 							href={menu.url}
-							target="_blank"
+							target={menu.target}
 							key={index}
 							className="flex flex-col items-center cursor-pointer transform transition-transform hover:scale-105 active:scale-95 outline-0 focus:outline-0"
 						>
