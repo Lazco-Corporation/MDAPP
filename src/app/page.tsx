@@ -64,12 +64,12 @@ export default function Home() {
 			</div>
 			<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center p-4 overflow-hidden">
 				<img src="/images/logoMD.png" alt="Logo" className="mb-10 w-[12rem]" />
-				<div className="pb-8 overflow-x-auto">
-					<div className="grid grid-cols-4 gap-4 max-sm:gap-3">
+				<div className="pb-8 overflow-y-auto">
+					<div className="grid grid-cols-4 gap-4 max-sm:gap-3 p-1">
 						{menus.map((menu, index) => (
 							<Link
 								href={menu.url}
-								target={menu.target}
+								target="_blank"
 								key={index}
 								className="flex flex-col items-center cursor-pointer transform transition-transform hover:scale-105 active:scale-95 outline-0 focus:outline-0"
 							>
@@ -78,15 +78,15 @@ export default function Home() {
 									alt={menu.name}
 									className="rounded-xl flex items-center justify-center shadow-lg mb-2 object-cover"
 									style={{
-										width: "clamp(3.5rem, 20vw, 8rem)",
-										height: "clamp(3.5rem, 20vw, 8rem)",
+										width: "clamp(2.8rem, 16vw, 6.5rem)",
+										height: "clamp(2.8rem, 16vw, 6.5rem)",
 									}}
 								/>
 								<span
 									className="text-center leading-tight text-white font-bold font-[Arial_Black]"
 									style={{
-										fontSize: "clamp(0.75rem, 3.8vw, 1.1rem)",
-										maxWidth: "clamp(3.5rem, 20vw, 8rem)",
+										fontSize: "clamp(0.65rem, 3.2vw, 0.95rem)",
+										maxWidth: "clamp(2.8rem, 16vw, 6.5rem)",
 									}}
 								>
 									{menu.name}
