@@ -33,10 +33,11 @@ export async function POST(request: NextRequest) {
 
 	let session: string | null = null;
 	let wRole: string | null = null;
-	let userID: string | null = null;
-	let userPassword: string | null = password;
+	const userID: string | null = id;
+	const userPassword: string | null = password;
 	let name: string | null = null;
 	let stuDept: string | null = null;
+	let cRole: Array<string> | null = null;
 
 	await fetch("http://140.128.156.106/MDAPP/SloginX.php", requestOptions)
 		.then((response) => response.text())
@@ -71,16 +72,6 @@ export async function POST(request: NextRequest) {
 				stuDept = null;
 			}
 
-			// Find user ID
-			const userIdMatches = result.match(/stu_id=([A-Z0-9]+)/g);
-			if (userIdMatches) {
-				let userIdTMP: string[] = [];
-				userIdTMP = [...new Set(userIdMatches)];
-				userID = userIdTMP[0].replace("stu_id=", "");
-			} else {
-				userID = null;
-			}
-
 			// Find user name
 			const userNameMatches1 = result.match(/usrName">([^<]+)/);
 			if (userNameMatches1) {
@@ -100,6 +91,30 @@ export async function POST(request: NextRequest) {
 
 			if (!name) {
 				name = null;
+			}
+
+			// Find cRole options count
+			const cRoleSelectMatch = result.match(
+				/<select[^>]*cRole[^>]*>(.*?)<\/select>/s,
+			);
+			if (cRoleSelectMatch) {
+				const optionDetailMatches = cRoleSelectMatch[1].match(
+					/<option[^>]*value\s*=\s*["']([^"']*)["'][^>]*>/g,
+				);
+				if (optionDetailMatches) {
+					const cRoleTMP: string[] = [];
+					optionDetailMatches.map((option) => {
+						const valueMatch = option.match(/value\s*=\s*["']([^"']*)["']/);
+						if (valueMatch) {
+							cRoleTMP.push(valueMatch[1]);
+						}
+					});
+					cRole = cRoleTMP;
+				} else {
+					cRole = [];
+				}
+			} else {
+				cRole = [];
 			}
 		})
 		.catch((error: any) => console.log("error", error));
@@ -139,6 +154,7 @@ export async function POST(request: NextRequest) {
 			userPassword,
 			session,
 			wRole,
+			cRole,
 			code,
 			mail,
 			className,

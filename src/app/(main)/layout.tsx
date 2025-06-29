@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
 "use client";
 import { useSession, signOut } from "next-auth/react";
 import { Undo2, LogOut, RotateCw } from "lucide-react";
@@ -57,10 +58,27 @@ export default function MainLayout({
 					/>
 				)}
 
-				<div className="flex-1 w-full text-center justify-end items-end flex h-full">
-					<span className="text-white text-xl font-bold w-full my-auto pt-2">
-						{userData?.name} ({cRole[userData?.wRole] || userData?.wRole})
-					</span>
+				<div className="flex-1 w-full text-center justify-center items-end flex h-full">
+					<div className="flex items-center justify-center h-full">
+						<span className="text-white text-xl font-bold my-auto pt-2">
+							{userData?.name}
+						</span>
+						<div className="flex items-center justify-center h-full pt-2">
+							<select className="appearance-none my-auto ml-2 text-white bg-[#272d38] border-2 border-white/30 rounded-md h-[2rem] px-2 cursor-pointer">
+								{userData?.cRole?.map((role: string, index: number) => {
+									return (
+										<option
+											key={index}
+											value={role}
+											selected={userData?.cRole[0] === role}
+										>
+											{cRole[role] || role}
+										</option>
+									);
+								})}
+							</select>
+						</div>
+					</div>
 				</div>
 				<button
 					type="button"

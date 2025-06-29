@@ -51,6 +51,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 				token.email = user.mail;
 				token.code = user.code;
 				token.wRole = user.wRole;
+				token.cRole = user.cRole;
 				token.session = user.session;
 				token.className = user.className;
 				token.userIdentity = user.userIdentity;
@@ -64,6 +65,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 					email: token.email,
 					code: token.code,
 					wRole: token.wRole,
+					cRole: token.cRole,
 					session: token.session,
 					className: token.className,
 					userIdentity: token.userIdentity,
@@ -79,6 +81,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 				session.user.email = token.email;
 				session.user.code = token.code;
 				session.user.wRole = token.wRole;
+				session.user.cRole = token.cRole;
 				session.user.session = token.session;
 				session.user.className = token.className;
 				session.user.userIdentity = token.userIdentity;
