@@ -3,7 +3,7 @@ export function getLaunchPad(userData: any) {
 		return [];
 	}
 
-	if (userData.wRole === "${userData?.wRole}") {
+	if (userData.wRole === "STU") {
 		return [
 			{
 				name: "校安中心",
