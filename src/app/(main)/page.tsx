@@ -40,15 +40,15 @@ export default function Home() {
 								alt={item.name}
 								className="rounded-xl flex items-center justify-center shadow-lg mb-2 object-cover"
 								style={{
-									width: "clamp(2.8rem, 16vw, 6.5rem)",
-									height: "clamp(2.8rem, 16vw, 6.5rem)",
+									width: "clamp(3.2rem, 19vw, 7.5rem)",
+									height: "clamp(3.2rem, 19vw, 7.5rem)",
 								}}
 							/>
 							<span
 								className="text-center leading-tight text-white font-bold font-[Arial_Black]"
 								style={{
-									fontSize: "clamp(0.65rem, 3.2vw, 0.95rem)",
-									maxWidth: "clamp(2.8rem, 16vw, 6.5rem)",
+									fontSize: "clamp(0.75rem, 3.6vw, 1.05rem)",
+									maxWidth: "clamp(3.2rem, 19vw, 7.5rem)",
 								}}
 							>
 								{item.name}
