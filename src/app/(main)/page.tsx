@@ -8,11 +8,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { getLaunchPad } from "./(main)/launchPad";
+import Loading from "@/components/Loading";
 
 export default function Home() {
 	const { data: session } = useSession();
 	const userData: any = session?.user;
 	const [launchPad, setLaunchPad] = useState<any>([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		if (userData) {
@@ -22,6 +24,20 @@ export default function Home() {
 			setLaunchPad([]);
 		}
 	}, [userData]);
+
+	useEffect(() => {
+		if (userData && launchPad.length > 0) {
+			setIsLoading(false);
+		}
+	}, [userData, launchPad]);
+
+	if (isLoading) {
+		return (
+			<div className="flex flex-col items-center justify-center h-full w-full relative bg-[#1c1c1e]">
+				<Loading color="white" size="md" />
+			</div>
+		);
+	}
 
 	return (
 		<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center p-4 overflow-hidden">
@@ -43,6 +59,7 @@ export default function Home() {
 									width: "clamp(3.2rem, 19vw, 7.5rem)",
 									height: "clamp(3.2rem, 19vw, 7.5rem)",
 								}}
+								loading="lazy"
 							/>
 							<span
 								className="text-center leading-tight text-white font-bold font-[Arial_Black] px-1"
