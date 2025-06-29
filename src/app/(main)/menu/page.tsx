@@ -49,7 +49,7 @@ export default function MenuPage() {
 			target: "_blank",
 		},
 		{
-			name: "學涯導航系統(生涯輔導紀錄)",
+			name: "學涯導航系統",
 			url: `https://crm.mingdao.edu.tw/CRM/m/JU.asp?func=ju&session=${userData?.session}&wRole=${userData?.wRole}&stu_id=${userData?.userID}`,
 			target: "_blank",
 		},
@@ -74,7 +74,7 @@ export default function MenuPage() {
 							href={menu.url ? menu.url : "#"}
 							target={menu.target}
 							key={index}
-							className="h-[3rem] w-full flex items-center justify-center bg-[#272d38] border-2 border-white/30 rounded-lg shadow-white/20 shadow-md text-white mx-auto "
+							className="p-2 h-[3rem] w-full flex items-center justify-center bg-[#272d38] border-2 border-white/30 rounded-lg shadow-white/20 shadow-md text-white mx-auto "
 						>
 							<p className="font-bold font-[PingFang_SC]">{menu.name}</p>
 						</Link>

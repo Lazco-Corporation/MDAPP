@@ -25,7 +25,7 @@ export default function Home() {
 
 	return (
 		<div className="h-[calc(100dvh-3.5rem)] w-full flex flex-col items-center p-4 overflow-hidden">
-			<img src="/images/logoMD.png" alt="Logo" className="my-4 w-[12rem]" />
+			<img src="/images/logoMD.png" alt="Logo" className="mb-4 w-[12rem]" />
 			<div className="pb-8 overflow-y-auto">
 				<div className="grid grid-cols-4 gap-4 max-sm:gap-3 p-1">
 					{launchPad.map((item: any, index: any) => (
