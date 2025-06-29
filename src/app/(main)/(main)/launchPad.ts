@@ -3,7 +3,7 @@ export function getLaunchPad(userData: any) {
 		return [];
 	}
 
-	if (userData.wRole === "STU") {
+	if (userData.wRole === "${userData?.wRole}") {
 		return [
 			{
 				name: "校安中心",
@@ -14,7 +14,7 @@ export function getLaunchPad(userData: any) {
 			{
 				name: "即時刻表",
 				image: "/icons/MD-timetable.webp",
-				url: `https://s44.mingdao.edu.tw/AACourses/Web/qWTTM.php?lang=CH&rMode=APP&session=${userData?.session}&wRole=${userData?.wRole === "STU" ? "STD" : userData?.wRole}`,
+				url: `https://s44.mingdao.edu.tw/AACourses/Web/qWTTM.php?lang=CH&rMode=APP&session=${userData?.session}&wRole=${userData?.wRole === "${userData?.wRole}" ? "STD" : userData?.wRole}`,
 				target: "_blank",
 			},
 			{
@@ -61,7 +61,7 @@ export function getLaunchPad(userData: any) {
 				target: "_blank",
 			},
 			{
-				name: "生活規範",
+				name: "學生生活規範",
 				image: "/icons/MD-rule.png",
 				url: `https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/首頁`,
 				target: "_blank",
@@ -76,6 +76,54 @@ export function getLaunchPad(userData: any) {
 				name: "修繕填報",
 				image: "/icons/MD-fix.png",
 				url: `https://app3.mingdao.edu.tw/apply/stu_fix.php?session=${userData?.session}&wRole=${userData?.wRole}`,
+				target: "_blank",
+			},
+			{
+				name: "繳款領款資訊",
+				image: "/icons/MD-payment.png",
+				url: `https://crm.mingdao.edu.tw/crm/m/stu_acc.asp?session=${userData?.session}&wRole=${userData?.wRole}&stu_id=${userData?.userID}`,
+				target: "_blank",
+			},
+			{
+				name: "明道雲城",
+				image: "/icons/MD-estore.png",
+				url: `https://crm.mingdao.edu.tw/EStore_new/session_decode.asp?session=${userData?.session}&wRole=${userData?.wRole}`,
+				target: "_blank",
+			},
+			{
+				name: "行事曆",
+				image: "/icons/MD-Calendar.png",
+				url: `https://s44.mingdao.edu.tw/AACourses/Web/eCalendar_view.php?rMode=APP&session=${userData?.session}&wRole=${userData?.wRole}`,
+				target: "_blank",
+			},
+			{
+				name: "學生社團",
+				image: "/icons/MD-stu-societies.png",
+				url: `https://sites.google.com/ms.mingdao.edu.tw/studentclubs/`,
+				target: "_blank",
+			},
+			{
+				name: "明道首頁",
+				image: "/icons/MD-web.png",
+				url: `https://www3.mingdao.edu.tw/`,
+				target: "_blank",
+			},
+			{
+				name: "明道粉專",
+				image: "/icons/MD-fb.png",
+				url: `https://www.facebook.com/mdhsstories`,
+				target: "_blank",
+			},
+			{
+				name: "校務週報",
+				image: "/icons/MD-Weekly.png",
+				url: `https://sites.google.com/ms.mingdao.edu.tw/mdnewsletter/home`,
+				target: "_blank",
+			},
+			{
+				name: "共讀共享共表達",
+				image: "/icons/MD-Keep-Doing.png",
+				url: `https://crm.mingdao.edu.tw/m/read_tog.asp?session=${userData?.session}&wRole=${userData?.wRole}`,
 				target: "_blank",
 			},
 		];

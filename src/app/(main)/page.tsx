@@ -45,10 +45,10 @@ export default function Home() {
 								}}
 							/>
 							<span
-								className="text-center leading-tight text-white font-bold font-[Arial_Black]"
+								className="text-center leading-tight text-white font-bold font-[Arial_Black] px-1"
 								style={{
-									fontSize: "clamp(0.75rem, 3.6vw, 1.05rem)",
-									maxWidth: "clamp(3.2rem, 19vw, 7.5rem)",
+									fontSize: "clamp(0.7rem, 3.6vw, 1rem)",
+									minWidth: "max-content",
 								}}
 							>
 								{item.name}
