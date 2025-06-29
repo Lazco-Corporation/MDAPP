@@ -121,7 +121,7 @@ export function getLaunchPad(userData: any) {
 				target: "_blank",
 			},
 			{
-				name: "共讀共享共表達",
+				name: "共讀共享",
 				image: "/icons/MD-Keep-Doing.png",
 				url: `https://crm.mingdao.edu.tw/m/read_tog.asp?session=${userData?.session}&wRole=${userData?.wRole}`,
 				target: "_blank",
