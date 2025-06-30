@@ -1,0 +1,187 @@
+import type { User } from "@/types/user";
+
+export function getParLaunchPad(userData: User) {
+	return [
+		{
+			name: "行事曆",
+			image: "/icons/MD-Calendar.png",
+			url: `https://s44.mingdao.edu.tw/AACourses/Web/eCalendar_view.php?rMode=APP&session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "即時刻表",
+			image: "/icons/MD-timetable.webp",
+			url: `https://s44.mingdao.edu.tw/AACourses/Web/qWTTM.php?lang=CH&rMode=APP&session=${userData.parSession}&wRole=${userData.cRole === "STU" ? "STD" : userData.wRole}`,
+			target: "_blank",
+		},
+		{
+			name: "訊息通知",
+			image: "/icons/MD-message.png",
+			url: `https://app.mingdao.edu.tw/MDAPP/msgList.php?session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "即時資訊",
+			image: "/icons/MD-info.webp",
+			url: `/menu2`,
+			// url: `https://app.mingdao.edu.tw/MDAPP/menuList.php?qFID=F11&session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_self",
+		},
+		{
+			name: "校安中心",
+			image: "/icons/MD-safety.webp",
+			url: "https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/學生群聚與衝突處理",
+			target: "_blank",
+		},
+		{
+			name: "通勤便捷",
+			image: "/icons/MD-school-bus.png",
+			url: `http://sa9.mingdao.edu.tw/host1/exercise/traffic_jump.php?session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "提假及審假",
+			image: "/icons/MD-leave-chk.png",
+			openMenu: true,
+			menuName: "leave",
+		},
+		{
+			name: "銷過申請審核",
+			image: "/icons/MD-CA-index.png",
+			openMenu: true,
+			menuName: "CA",
+		},
+		{
+			name: "明道首頁",
+			image: "/icons/MD-web.png",
+			url: `https://www3.mingdao.edu.tw/`,
+			target: "_blank",
+		},
+		{
+			name: "認識明道",
+			image: "/icons/MD-mdhs.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/mdhs50/`,
+			target: "_blank",
+		},
+		{
+			name: "明道粉專",
+			image: "/icons/MD-fb.png",
+			url: `https://www.facebook.com/mdhsstories`,
+			target: "_blank",
+		},
+		{
+			name: "招生",
+			image: "/icons/MD-recruit.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/admissions/首頁`,
+			target: "_blank",
+		},
+		{
+			name: "共讀共享",
+			image: "/icons/MD-Keep-Doing.png",
+			url: `https://crm.mingdao.edu.tw/m/read_tog.asp?session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "學生生活規範",
+			image: "/icons/MD-rule.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/guidance-and-counseling/首頁`,
+			target: "_blank",
+		},
+		{
+			name: "家庭教育",
+			image: "/icons/MD-lecture.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/mdcounselingoffice/家庭教育`,
+			target: "_blank",
+		},
+		{
+			name: "明道雲城",
+			image: "/icons/MD-estore.png",
+			url: `https://crm.mingdao.edu.tw/EStore_new/session_decode.asp?session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "校務週報",
+			image: "/icons/MD-Weekly.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/mdnewsletter/home`,
+			target: "_blank",
+		},
+		{
+			name: "Podcast",
+			image: "/icons/MD-PODCAST.png",
+			url: `https://podcasts.apple.com/tw/podcast/發現明道-discover-mingdao/id1562621437`,
+			target: "_blank",
+		},
+		{
+			name: "學生共學社群",
+			image: "/icons/MD-SIG.png",
+			url: `https://sig.mingdao.edu.tw?session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "學生社團",
+			image: "/icons/MD-stu-societies.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/studentclubs/`,
+			target: "_blank",
+		},
+		{
+			name: "健康",
+			image: "/icons/MD-health.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/health/`,
+			target: "_blank",
+		},
+		{
+			name: "人文",
+			image: "/icons/MD-humanities.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/humanistic-education/`,
+			target: "_blank",
+		},
+		{
+			name: "科學",
+			image: "/icons/MD-stem.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/mdhsteamfair/`,
+			target: "_blank",
+		},
+		{
+			name: "創新",
+			image: "/icons/MD-innovation.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/innovation/`,
+			target: "_blank",
+		},
+		{
+			name: "國際",
+			image: "/icons/MD-International.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/i18n`,
+			target: "_blank",
+		},
+		{
+			name: "英文檢定",
+			image: "/icons/ENG_certificate.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/english-test-schedule/`,
+			target: "_blank",
+		},
+		{
+			name: "IDOS PAR",
+			image: "/icons/MD-IDOS.png",
+			url: `https://s44.mingdao.edu.tw/IDOS/SloginPS.php?rMode=APP&session=${userData.parSession}&wRole=${userData.cRole}`,
+			target: "_blank",
+		},
+		{
+			name: "繳費領款資訊",
+			image: "/icons/MD-payment.png",
+			url: `https://crm.mingdao.edu.tw/crm/m/stu_acc.asp?session=${userData.parSession}&wRole=${userData.cRole}&stu_id=${userData.cStu?.id}`,
+			target: "_blank",
+		},
+		{
+			name: "線上捐款",
+			image: "/icons/MD-donate.png",
+			url: `https://www2.mingdao.edu.tw/parent/fundraising_platform9/index.php`,
+			target: "_blank",
+		},
+		{
+			name: "校園地圖",
+			image: "/icons/MD-map.png",
+			url: `https://sites.google.com/ms.mingdao.edu.tw/mdgeneralaffairsoffice/校園地圖`,
+			target: "_blank",
+		},
+	];
+}

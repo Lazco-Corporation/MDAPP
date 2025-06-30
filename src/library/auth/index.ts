@@ -43,49 +43,35 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 		async signIn() {
 			return true;
 		},
-		async jwt({ token, user }: { token: any; user: any }) {
+		async jwt({
+			token,
+			user,
+			trigger,
+			session,
+		}: {
+			token: any;
+			user?: any;
+			trigger?: "signIn" | "signUp" | "update";
+			session?: any;
+		}) {
 			if (user) {
-				token.userID = user.userID;
-				token.userPassword = user.userPassword;
-				token.name = user.name;
-				token.email = user.mail;
-				token.code = user.code;
-				token.wRole = user.wRole;
-				token.cRole = user.cRole;
-				token.session = user.session;
-				token.className = user.className;
-				token.userIdentity = user.userIdentity;
-				token.stuDept = user.stuDept;
+				token.user = user.user;
 			}
-			return (
-				token && {
-					userID: token.userID,
-					userPassword: token.userPassword,
-					name: token.name,
-					email: token.email,
-					code: token.code,
-					wRole: token.wRole,
-					cRole: token.cRole,
-					session: token.session,
-					className: token.className,
-					userIdentity: token.userIdentity,
-					stuDept: token.stuDept,
-				}
-			);
+
+			// 處理 update 觸發
+			if (trigger === "update") {
+				console.log("Updating token with session user data", session.user);
+				return {
+					...token,
+					user: session.user,
+				};
+			}
+
+			return token;
 		},
 		async session({ session, token }: { session: any; token: any }) {
 			if (token) {
-				session.user.userID = token.userID;
-				session.user.userPassword = token.userPassword;
-				session.user.name = token.name;
-				session.user.email = token.email;
-				session.user.code = token.code;
-				session.user.wRole = token.wRole;
-				session.user.cRole = token.cRole;
-				session.user.session = token.session;
-				session.user.className = token.className;
-				session.user.userIdentity = token.userIdentity;
-				session.user.stuDept = token.stuDept;
+				session.user = token.user;
 			}
 			return session;
 		},

@@ -1,14 +1,15 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> **/
 "use client";
 import { useSession, signOut } from "next-auth/react";
 import { Undo2, LogOut, RotateCw } from "lucide-react";
 import Loading from "@/components/Loading";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import type { User } from "@/types/user";
 
-const cRole: any = {
+const cRoleName: any = {
 	STU: "學生",
-	TEA: "教職員",
+	EMP: "教職員",
 	PAR: "家長",
 	ALU: "校友",
 };
@@ -18,8 +19,8 @@ export default function MainLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const { data: session, status } = useSession();
-	const userData: any = session?.user;
+	const { data: session, status, update } = useSession();
+	const userData: User = session?.user as User;
 	const pathname = usePathname();
 	const router = useRouter();
 	const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -35,6 +36,28 @@ export default function MainLayout({
 	const handleLogout = () => {
 		setShowLogoutConfirm(false);
 		signOut({ redirect: true, redirectTo: "/login" });
+	};
+
+	const handleChangeRole = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+		e.preventDefault();
+		const newRole = e.target.value;
+
+		if (
+			newRole !== userData.cRole &&
+			userData.wRole.find((role) => role === newRole)
+		) {
+			try {
+				await update({
+					user: {
+						...userData,
+						cRole: newRole,
+					},
+				});
+			} catch (error) {
+				console.error("Error updating user role:", error);
+				e.target.value = userData.cRole || "";
+			}
+		}
 	};
 
 	return (
@@ -61,18 +84,19 @@ export default function MainLayout({
 				<div className="flex-1 w-full text-center justify-center items-end flex h-full">
 					<div className="flex items-center justify-center h-full">
 						<span className="text-white text-xl font-bold my-auto pt-2">
-							{userData?.name}
+							{userData.name}
 						</span>
 						<div className="flex items-center justify-center h-full pt-2">
-							<select className="appearance-none my-auto ml-2 text-white bg-[#272d38] border-2 border-white/30 rounded-md h-[2rem] px-2 cursor-pointer">
-								{userData?.cRole?.map((role: string, index: number) => {
+							<select
+								defaultValue={userData.cRole}
+								onChange={handleChangeRole}
+								className="appearance-none my-auto ml-2 text-white bg-[#272d38] border-2 border-white/30 rounded-md h-[2rem] px-2 cursor-pointer"
+								style={{ textAlignLast: "center" }}
+							>
+								{userData.wRole.map((role: string, index: number) => {
 									return (
-										<option
-											key={index}
-											value={role}
-											selected={userData?.cRole[0] === role}
-										>
-											{cRole[role] || role}
+										<option key={index} value={role}>
+											{cRoleName[role] || role}
 										</option>
 									);
 								})}

@@ -2,65 +2,66 @@
 "use client";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import type { User } from "@/types/user";
 
 export default function MenuPage() {
 	const { data: session } = useSession();
-	const userData: any = session?.user;
+	const userData: User = session?.user as User;
 
 	const menus = [
 		{
 			name: "定期評量 / 期中考",
-			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S1&session=${userData?.session}&wRole=${userData?.wRole}&stu_key=${userData?.code}&stu_id=${userData?.userID}&stu_dept=${userData?.stuDept}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S1&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_key=${userData?.stuCode}&stu_id=${userData?.id}&stu_dept=${userData?.stuDept}`,
 			target: "_blank",
 		},
 		{
 			name: "學習成績與素養表現",
-			url: `https://s11.mingdao.edu.tw/mderp/AcademicGuide/stuSemwScore/?session=${userData?.session}&wRole=${userData?.wRole}`,
+			url: `https://s11.mingdao.edu.tw/mderp/AcademicGuide/stuSemwScore/?session=${userData?.stuSession}&wRole=${userData?.cRole}`,
 			target: "_blank",
 		},
 		{
 			name: "模擬考",
-			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S3&session=${userData?.session}&wRole=${userData?.wRole}&stu_key=${userData?.code}&stu_id=${userData?.userID}&stu_dept=${userData?.stuDept}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S3&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_key=${userData?.stuCode}&stu_id=${userData?.id}&stu_dept=${userData?.stuDept}`,
 			target: "_blank",
 		},
 		{
 			name: "缺曠獎懲明細",
-			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S2&session=${userData?.session}&wRole=${userData?.wRole}&stu_key=${userData?.code}&stu_id=${userData?.userID}&stu_dept=${userData?.stuDept}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S2&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_key=${userData?.stuCode}&stu_id=${userData?.id}&stu_dept=${userData?.stuDept}`,
 			target: "_blank",
 		},
 		{
 			name: "門禁系統查詢",
-			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S9&session=${userData?.session}&wRole=${userData?.wRole}&stu_key=${userData?.code}&stu_id=${userData?.userID}&stu_dept=${userData?.stuDept}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/search_setup1_op.asp?score_select=S9&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_key=${userData?.stuCode}&stu_id=${userData?.id}&stu_dept=${userData?.stuDept}`,
 			target: "_blank",
 		},
 		{
 			name: "週成績、生活常規",
-			url: `https://crm.mingdao.edu.tw/CRM/m/search_S10.asp?session=${userData?.session}&wRole=${userData?.wRole}&stu_id=${userData?.userID}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/search_S10.asp?session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_id=${userData?.id}`,
 			target: "_blank",
 		},
 		{
 			name: "課外社團填報與查詢",
-			url: `https://s44.mingdao.edu.tw/ReLearn/Web/index.php?session=${userData?.session}&wRole=${userData?.wRole === "STU" ? "STD" : userData?.wRole}`,
+			url: `https://s44.mingdao.edu.tw/ReLearn/Web/index.php?session=${userData?.stuSession}&wRole=${userData?.cRole === "STU" ? "STD" : userData?.cRole}`,
 			target: "_blank",
 		},
 		{
 			name: "學生服儀與行為違規",
-			url: `https://s44.mingdao.edu.tw/ORDER/SubSystem/RKrecord/stdRKrecord_query.php?session=${userData?.session}&wRole=${userData?.wRole === "STU" ? "STD" : userData?.wRole}`,
+			url: `https://s44.mingdao.edu.tw/ORDER/SubSystem/RKrecord/stdRKrecord_query.php?session=${userData?.stuSession}&wRole=${userData?.cRole === "STU" ? "STD" : userData?.cRole}`,
 			target: "_blank",
 		},
 		{
 			name: "學涯導航系統",
-			url: `https://crm.mingdao.edu.tw/CRM/m/JU.asp?func=ju&session=${userData?.session}&wRole=${userData?.wRole}&stu_id=${userData?.userID}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/JU.asp?func=ju&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_id=${userData?.id}`,
 			target: "_blank",
 		},
 		{
 			name: "學習歷程檔案",
-			url: `https://crm.mingdao.edu.tw/CRM/m/JU.asp?func=ep&session=${userData?.session}&wRole=${userData?.wRole}&stu_id=${userData?.userID}`,
+			url: `https://crm.mingdao.edu.tw/CRM/m/JU.asp?func=ep&session=${userData?.stuSession}&wRole=${userData?.cRole}&stu_id=${userData?.id}`,
 			target: "_blank",
 		},
 		{
 			name: "課業輔導系統-缺席查詢",
-			url: `https://s44.mingdao.edu.tw/ReLearn/AdminUnit/M_rlabslog/rlabslog_query.php?rMode=APP&session=${userData?.session}&wRole=${userData?.wRole}`,
+			url: `https://s44.mingdao.edu.tw/ReLearn/AdminUnit/M_rlabslog/rlabslog_query.php?rMode=APP&session=${userData?.stuSession}&wRole=${userData?.cRole}`,
 			target: "_blank",
 		},
 	];

@@ -11,8 +11,9 @@ export default function SignIn() {
 	};
 
 	return (
-		<div className="max-w-md h-full w-full mx-auto">
-			<div className="flex flex-col items-center justify-start h-full w-full relative">
+		<div className="min-h-screen flex flex-col">
+			{/* 主要內容區域 */}
+			<div className="flex-1 flex flex-col items-center justify-start max-w-md w-full mx-auto px-4">
 				<img
 					src="/images/logoMD.png"
 					alt="Logo"
@@ -22,7 +23,7 @@ export default function SignIn() {
 				/>
 				<form
 					action={credentialsAction}
-					className="w-full px-10 flex flex-col items-center justify-center"
+					className="w-full px-6 flex flex-col items-center justify-center"
 				>
 					<div className="flex items-center justify-center mb-4 gap-2 w-full">
 						<UserRound color="white" className="flex-none" size={40} />
@@ -58,7 +59,7 @@ export default function SignIn() {
 					</a>
 					<button
 						type="submit"
-						className="relative overflow-hidden w-[14rem] h-[3rem] rounded-xl cursor-pointer mt-5"
+						className="relative overflow-hidden w-[14rem] h-[3rem] rounded-xl cursor-pointer mt-5 mb-8"
 						style={{
 							background:
 								"linear-gradient(135deg, #FFE135 0%, #FFED4A 20%, #FFF8E1 50%, #FFD54F 70%, #FFC107 85%, #FF9800 100%);",
@@ -70,12 +71,16 @@ export default function SignIn() {
 						</p>
 					</button>
 				</form>
+			</div>
+
+			{/* 底部圖片區域 - 只在鍵盤沒有出現時顯示 */}
+			<div className="flex-shrink-0 w-full max-w-md mx-auto">
 				<img
 					src="/images/loginIVAN.png"
 					alt="Login Ivan"
 					width="100%"
 					height="auto"
-					className="absolute bottom-0"
+					className="w-full h-auto block"
 				/>
 			</div>
 		</div>
