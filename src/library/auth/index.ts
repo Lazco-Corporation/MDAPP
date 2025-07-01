@@ -2,11 +2,18 @@
 
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import type { User } from "@/types/user";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
 	trustHost: true,
 	pages: {
 		signIn: "/login",
+	},
+	// 禁用或自定義日誌
+	logger: {
+		error() {},
+		warn() {},
+		debug() {},
 	},
 	providers: [
 		Credentials({
@@ -25,22 +32,27 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 						body: loginRaw,
 					};
 
-					await fetch(
+					const response = await fetch(
 						`${process.env.NEXT_PUBLIC_HOST}/api/auth/login`,
 						requestOptions,
-					)
-						.then((response) => response.json())
-						.then(async (result) => {
-							user = result;
-						})
-						.catch((error) => console.log("error", error));
+					);
+					const result = await response.json();
+
+					if (!result.user?.cRole) {
+						return null;
+					} else {
+						user = result;
+					}
 				}
 				return user;
 			},
 		}),
 	],
 	callbacks: {
-		async signIn() {
+		async signIn({ user }: { user: any }) {
+			if (!user) {
+				return false;
+			}
 			return true;
 		},
 		async jwt({

@@ -3,12 +3,26 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { UserRound, Lock } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function SignIn() {
 	const credentialsAction = (formData: FormData) => {
 		const data = Object.fromEntries(formData.entries());
 		signIn("credentials", { ...data });
 	};
+
+	const [showError, setShowError] = useState(false);
+
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const error = searchParams.get("error");
+
+	useEffect(() => {
+		if (error === "CredentialsSignin") {
+			setShowError(true);
+		}
+	}, [error]);
 
 	return (
 		<div className="min-h-screen flex flex-col">
@@ -83,6 +97,56 @@ export default function SignIn() {
 					className="w-full h-auto block"
 				/>
 			</div>
+			{showError && (
+				<div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+					<button
+						type="button"
+						className="absolute inset-0"
+						onClick={() => {
+							setShowError(false);
+							router.push("/login");
+						}}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" || e.key === " ") {
+								setShowError(false);
+								router.push("/login");
+							}
+						}}
+						aria-label="關閉登出確認"
+						tabIndex={0}
+						style={{
+							background: "transparent",
+							border: "none",
+							padding: 0,
+							margin: 0,
+						}}
+					/>
+
+					<div className="bg-[#28272a] backdrop-blur-md rounded-2xl overflow-hidden w-full max-w-xs relative animate-scale-in">
+						<div className="px-6 py-5 text-center">
+							<h3 className="text-xl font-semibold text-white mb-2">
+								登入失敗
+							</h3>
+							<p className="text-gray-300 text-sm">
+								您的帳號密碼錯誤或是帳號與密碼相同
+							</p>
+						</div>
+						<div className="border-t border-gray-200"></div>
+						<div className="flex">
+							<button
+								type="button"
+								className="flex-1 py-3 text-blue-500 font-bold text-lg transition-colors border-r border-gray-200"
+								onClick={() => {
+									setShowError(false);
+									router.push("/login");
+								}}
+							>
+								了解
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
