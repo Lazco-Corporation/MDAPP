@@ -2,7 +2,6 @@
 
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import type { User } from "@/types/user";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
 	trustHost: true,
