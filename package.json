@@ -23,5 +23,7 @@
 		"@types/react-dom": "^19",
 		"tailwindcss": "^4",
 		"typescript": "^5"
-	}
+	},
+	"license": "AGPL-3.0-or-later",
+	"author": "Lazco Corporation (拉資科科技有限公司)"
 }
